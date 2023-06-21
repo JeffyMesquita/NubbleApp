@@ -13,16 +13,10 @@ function App(): JSX.Element {
         Hello World
       </Text>
       <Text
-        preset="headingSmall"
+        preset="headingLarge"
         style={{
-          color: 'red',
-        }}>
-        Hello World
-      </Text>
-      <Text
-        preset="paragraphCaption"
-        style={{
-          color: 'purple',
+          color: 'gray',
+          fontFamily: 'Satoshi-Italic'
         }}>
         Hello World
       </Text>
