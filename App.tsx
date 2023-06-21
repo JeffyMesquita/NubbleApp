@@ -5,7 +5,27 @@ import {Text} from './src/components/Text/Text';
 function App(): JSX.Element {
   return (
     <SafeAreaView>
-      <Text>Hello World</Text>
+      <Text
+        preset="headingLarge"
+        style={{
+          color: 'red',
+        }}>
+        Hello World
+      </Text>
+      <Text
+        preset="headingSmall"
+        style={{
+          color: 'red',
+        }}>
+        Hello World
+      </Text>
+      <Text
+        preset="paragraphCaption"
+        style={{
+          color: 'purple',
+        }}>
+        Hello World
+      </Text>
     </SafeAreaView>
   );
 }
