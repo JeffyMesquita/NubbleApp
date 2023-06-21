@@ -27,6 +27,82 @@ You can go directly to the file `info.plist` inside of folders `ios/YourApp` and
 
 This option too need to run the command `npm run ios` or `yarn ios` to generate the fonts in the iOS project.
 
+### 2. Using Restyle for Theme and UI components
 
+#### Restyle
 
+Restyle is a framework for building UI components with a style props API, written in TypeScript and inspired by React Native's StyleSheet, with themes inspired by Theme UI.
+
+#### Installation
+
+To install Restyle, you need to run the following command:
+
+```bash
+npm install @shopify/restyle
+```
+
+or
+
+```bash
+yarn add @shopify/restyle
+```
+
+#### Usage
+
+In `src` folder create a folder `theme` and inside create a file `theme.ts` and put the following code:
+
+```typescript
+import { createTheme } from '@shopify/restyle';
+
+const palette = {
+  purple: '#5A31F4',
+  white: '#FFFFFF',
+  black: '#000000',
+  gray: '#F4F4F4',
+  lightGray: '#EAEAEA',
+  darkGray: '#8A8A8A',
+};
+
+const theme = createTheme({
+  colors: {
+    primary: palette.purple,
+    white: palette.white,
+    black: palette.black,
+    gray: palette.gray,
+    lightGray: palette.lightGray,
+    darkGray: palette.darkGray,
+  },
+  spacing: {
+    s: 8,
+    m: 16,
+    l: 24,
+    xl: 40,
+  },
+  breakpoints: {
+    phone: 0,
+    tablet: 768,
+  },
+  textVariants: {
+    title: {
+      fontSize: 28,
+      fontFamily: 'Roboto-Bold',
+      color: 'black',
+    },
+    body: {
+      fontSize: 16,
+      fontFamily: 'Roboto-Regular',
+      color: 'darkGray',
+    },
+    button: {
+      fontSize: 15,
+      fontFamily: 'Roboto-Bold',
+      color: 'white',
+    },
+  },
+});
+
+export type Theme = typeof theme;
+
+export default theme;
+```
 
