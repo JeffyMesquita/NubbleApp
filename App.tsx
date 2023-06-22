@@ -18,9 +18,7 @@ function App(): JSX.Element {
             gap: 16,
           }}>
           <Text preset="headingLarge">Coffstack</Text>
-          <Box marginBottom='s24'>
-            <Button title="Entrar" />
-          </Box>
+            <Button title="Entrar" marginBottom='s24' />
             <Button loading title="Loading" />
         </View>
       </SafeAreaView>
