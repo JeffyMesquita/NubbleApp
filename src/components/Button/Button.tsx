@@ -19,7 +19,9 @@ export function Button({title, loading}: ButtonProps) {
       paddingHorizontal="s20"
       height={50}
       alignItems="center"
-      justifyContent="center">
+      justifyContent="center"
+      borderRadius='s16'
+    >
       {loading ? (
         <ActivityIndicator color="#fff" />
       ) : (
