@@ -1,11 +1,11 @@
-import { ThemeProvider } from '@shopify/restyle';
+import {ThemeProvider} from '@shopify/restyle';
 import React from 'react';
-import { SafeAreaView, View } from 'react-native';
+import {SafeAreaView, View} from 'react-native';
 
-import { Button } from './src/components/Button/Button';
-import { Text } from './src/components/Text/Text';
+import {Button} from './src/components/Button/Button';
+import {Text} from './src/components/Text/Text';
 
-import { theme } from './src/theme/theme';
+import {theme} from './src/theme/theme';
 
 function App(): JSX.Element {
   return (
@@ -18,9 +18,9 @@ function App(): JSX.Element {
           }}>
           <Text preset="headingLarge">Coffstack</Text>
           <Button title="Primary" marginBottom="s24" />
-          <Button loading preset='outline' title="Outline" marginBottom="s24" />
-          <Button preset='secondary' title="Secondary" marginBottom="s24" />
-          <Button loading title="Loading" />
+          <Button disabled title="Primary" marginBottom="s24" />
+          <Button preset="outline" title="Outline" marginBottom="s24" />
+          <Button disabled preset="outline" title="Outline" marginBottom="s24" />
         </View>
       </SafeAreaView>
     </ThemeProvider>

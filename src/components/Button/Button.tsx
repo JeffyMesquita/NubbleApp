@@ -6,23 +6,25 @@ import { Text } from '../Text/Text';
 import { buttonPresets } from './buttonPresets';
 import { ActivityIndicator } from '../ActivityIndicator/ActivityIndicator';
 
-export type ButtonPresets = 'primary' | 'outline' | 'secondary';
+export type ButtonPresets = 'primary' | 'outline';
 
 interface ButtonProps extends TouchableOpacityBoxProps {
   title: string;
   loading?: boolean;
   preset?: ButtonPresets;
+  disabled?: boolean;
 }
 
 export function Button({
   title,
   loading,
   preset = 'primary',
+  disabled,
   ...touchableOpacityBoxProps
 }: ButtonProps) {
   const {} = useTheme<Theme>();
 
-  const buttonPreset = buttonPresets[preset];
+  const buttonPreset = buttonPresets[preset][disabled ? 'disabled' : 'default'];
   return (
     <TouchableOpacityBox
       paddingHorizontal="s20"
@@ -30,6 +32,7 @@ export function Button({
       alignItems="center"
       justifyContent="center"
       borderRadius="s16"
+      disabled={disabled || loading}
       {...buttonPreset.container}
       {...touchableOpacityBoxProps}>
       {loading ? (
