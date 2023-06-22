@@ -6,6 +6,7 @@ import {Button} from './src/components/Button/Button';
 import {Text} from './src/components/Text/Text';
 
 import {theme} from './src/theme/theme';
+import { EyeOffIcon } from './src/assets/icons/EyeOffIcon';
 
 function App(): JSX.Element {
   return (
@@ -17,10 +18,11 @@ function App(): JSX.Element {
             gap: 16,
           }}>
           <Text preset="headingLarge">Coffstack</Text>
-          <Button title="Primary" marginBottom="s24" />
-          <Button disabled title="Primary" marginBottom="s24" />
-          <Button preset="outline" title="Outline" marginBottom="s24" />
-          <Button disabled preset="outline" title="Outline" marginBottom="s24" />
+          
+          <EyeOffIcon
+            color="blue"
+            size={100}
+          />
         </View>
       </SafeAreaView>
     </ThemeProvider>
