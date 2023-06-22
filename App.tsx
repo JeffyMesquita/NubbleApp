@@ -7,6 +7,8 @@ import {Text} from './src/components/Text/Text';
 
 import {theme} from './src/theme/theme';
 import { EyeOffIcon } from './src/assets/icons/EyeOffIcon';
+import { EyeOnIcon } from './src/assets/icons/EyeOnIcon';
+import { Icon } from './src/components/Icons/Icon';
 
 function App(): JSX.Element {
   return (
@@ -18,11 +20,9 @@ function App(): JSX.Element {
             gap: 16,
           }}>
           <Text preset="headingLarge">Coffstack</Text>
-          
-          <EyeOffIcon
-            color="blue"
-            size={100}
-          />
+
+          <Icon name="eyeOff" />
+          <Icon name="eyeOn" />
         </View>
       </SafeAreaView>
     </ThemeProvider>
