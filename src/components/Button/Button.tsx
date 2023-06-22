@@ -24,14 +24,13 @@ export function Button({title, loading, ...touchableOpacityBoxProps}: ButtonProp
       {...touchableOpacityBoxProps}
       >
       {loading ? (
-        <ActivityIndicator color="#fff" />
+        <ActivityIndicator color="#FFFFFF" />
       ) : (
         <Text
           preset="paragraphMedium"
           bold
-          style={{
-            color: '#fff',
-          }}>
+          color="primaryContrast"
+          >
           {title}
         </Text>
       )}
