@@ -1,25 +1,31 @@
 import React from 'react';
-import { EyeOnIcon } from '../../assets/icons/EyeOnIcon';
-import { EyeOffIcon } from '../../assets/icons/EyeOffIcon';
+import {EyeOffIcon} from '../../assets/icons/EyeOffIcon';
+import {EyeOnIcon} from '../../assets/icons/EyeOnIcon';
+import {useAppTheme} from '../../hooks/useAppTheme';
+import {ThemeColors} from '../../theme/theme';
+
+export interface IconBase {
+  size?: number;
+  color?: string;
+}
 
 interface Props {
   name: IconName;
+  color?: ThemeColors;
+  size?: number;
 }
 
-export function Icon(
-  {name}: Props
-){
+export function Icon({name, color = 'backgroundContrast', size}: Props) {
+  const {colors} = useAppTheme();
   const SVGIcon = iconRegistry[name];
 
-  return (
-    <SVGIcon />
-  )
+  return <SVGIcon color={colors[color]} size={size} />;
 }
 
 const iconRegistry = {
   eyeOn: EyeOnIcon,
   eyeOff: EyeOffIcon,
-}
+};
 
 type IconType = typeof iconRegistry;
 type IconName = keyof IconType;

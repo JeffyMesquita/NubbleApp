@@ -1,14 +1,11 @@
-import {ThemeProvider} from '@shopify/restyle';
+import { ThemeProvider } from '@shopify/restyle';
 import React from 'react';
-import {SafeAreaView, View} from 'react-native';
+import { SafeAreaView, View } from 'react-native';
 
-import {Button} from './src/components/Button/Button';
-import {Text} from './src/components/Text/Text';
+import { Text } from './src/components/Text/Text';
 
-import {theme} from './src/theme/theme';
-import { EyeOffIcon } from './src/assets/icons/EyeOffIcon';
-import { EyeOnIcon } from './src/assets/icons/EyeOnIcon';
 import { Icon } from './src/components/Icons/Icon';
+import { theme } from './src/theme/theme';
 
 function App(): JSX.Element {
   return (
@@ -21,8 +18,8 @@ function App(): JSX.Element {
           }}>
           <Text preset="headingLarge">Coffstack</Text>
 
-          <Icon name="eyeOff" />
-          <Icon name="eyeOn" />
+          <Icon name="eyeOff" color='carrotSecondary' size={50} />
+          <Icon name="eyeOn" color='error' size={78} />
         </View>
       </SafeAreaView>
     </ThemeProvider>
