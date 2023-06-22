@@ -6,22 +6,22 @@ import {Text} from './src/components/Text/Text';
 import {Button} from './src/components/Button/Button';
 
 import { theme } from './src/theme/theme';
+import { Box } from './src/components/Box/Box';
 
 function App(): JSX.Element {
   return (
-    <ThemeProvider
-      theme={theme}
-    >
+    <ThemeProvider theme={theme}>
       <SafeAreaView>
         <View
           style={{
             paddingHorizontal: 24,
             gap: 16,
           }}>
-          <Text preset="headingLarge">
-            Hello World
-          </Text>
-          <Button title="Hello World" />
+          <Text preset="headingLarge">Coffstack</Text>
+          <Box marginBottom='s24'>
+            <Button title="Entrar" />
+          </Box>
+            <Button loading title="Loading" />
         </View>
       </SafeAreaView>
     </ThemeProvider>
