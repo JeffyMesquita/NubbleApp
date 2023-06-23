@@ -11,9 +11,7 @@ export function SignUpScreen() {
     //TODO: implementar
   }
   return (
-    <Screen
-      canGoBack
-    >
+    <Screen canGoBack scrollable>
       <Text mb="s32" preset="headingLarge">
         Criar uma conta
       </Text>
@@ -41,6 +39,27 @@ export function SignUpScreen() {
           mb: 's20',
         }}
       />
+      <TextInput
+        label="E-mail"
+        placeholder="Digite seu e-mail"
+        boxProps={{
+          mb: 's20',
+        }}
+      />
+      <TextInput
+        label="E-mail"
+        placeholder="Digite seu e-mail"
+        boxProps={{
+          mb: 's20',
+        }}
+      />
+      <TextInput
+        label="E-mail"
+        placeholder="Digite seu e-mail"
+        boxProps={{
+          mb: 's20',
+        }}
+      />
 
       <TextInput
         label="Senha"
@@ -51,9 +70,7 @@ export function SignUpScreen() {
         }}
       />
 
-      <Button 
-      onPress={submitForm}
-      title="Criar uma conta" />
+      <Button onPress={submitForm} title="Criar uma conta" />
     </Screen>
   );
 };
