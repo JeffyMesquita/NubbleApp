@@ -25,7 +25,7 @@ function App(): JSX.Element {
           </Text>
 
           <Box mb="s20">
-            <TextInput label="E-mail" placeholder="Digite seu e-mail" />
+            <TextInput errorMessage='mensagem de erro' label="E-mail" placeholder="Digite seu e-mail" />
           </Box>
 
           <Box>
