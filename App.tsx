@@ -8,6 +8,7 @@ import {theme} from './src/theme/theme';
 import {Box} from './src/components/Box/Box';
 import {Button} from './src/components/Button/Button';
 import {TextInput} from './src/components/TextInput/TextInput';
+import { Icon } from './src/components/Icons/Icon';
 
 function App(): JSX.Element {
   return (
@@ -25,11 +26,19 @@ function App(): JSX.Element {
           </Text>
 
           <Box mb="s20">
-            <TextInput errorMessage='mensagem de erro' label="E-mail" placeholder="Digite seu e-mail" />
+            <TextInput
+              errorMessage="mensagem de erro"
+              label="E-mail"
+              placeholder="Digite seu e-mail"
+            />
           </Box>
 
           <Box>
-            <TextInput label="Senha" placeholder="Digite sua senha" />
+            <TextInput
+              label="Senha"
+              placeholder="Digite sua senha"
+              RightComponent={<Icon color='gray2' name="eyeOn" />}
+            />
           </Box>
 
           <Text mt="s10" color="primary" preset="paragraphSmall" bold>
