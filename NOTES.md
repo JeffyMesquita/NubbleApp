@@ -137,5 +137,99 @@ or
 yarn android
 ```
 
+#### Usage 
+
+Your use SVG in your project, you need to import the SVG component from `react-native-svg` and use in your code, for example:
+
+```typescript
+import React from 'react';
+import {View, Text} from 'react-native';
+import {Svg, Circle} from 'react-native-svg';
+
+const App = () => {
+  return (
+    <View>
+      <Text>React Native SVG</Text>
+      <Svg height="50" width="50">
+        <Circle cx="25" cy="25" r="25" fill="purple" />
+      </Svg>
+    </View>
+  );
+};
+
+export default App;
+```
+
+### 4. Using Safe Area Context
+
+#### Safe Area Context
+
+Safe Area Context is a React Native library that provides a flexible way to handle safe area, also works on Android and Web using react-native-web.
+
+#### Installation
+
+To install Safe Area Context, you need to run the following command:
+
+```bash
+npm install react-native-safe-area-context
+```
+
+or
+
+```bash
+yarn add react-native-safe-area-context
+```
+
+Is necessary to run the command:
+
+```bash
+cd ios && pod install && cd ..
+```
+
+and following run the command:
+
+```bash
+npm run ios
+```
+
+or
+
+```bash
+yarn ios
+```
+
+and too, you need to run the command:
+
+```bash
+npm run android
+```
+
+or
+
+```bash
+yarn android
+```
+
 #### Usage
+
+To use Safe Area Context, you need to import the SafeAreaProvider component from `react-native-safe-area-context` and use in your code, for example:
+
+```typescript
+import React from 'react';
+import {View, Text} from 'react-native';
+import {SafeAreaProvider} from 'react-native-safe-area-context';
+
+const App = () => {
+  return (
+    <SafeAreaProvider>
+      <View>
+        <Text>Safe Area Context</Text>
+      </View>
+    </SafeAreaProvider>
+  );
+};
+
+export default App;
+```
+
 
