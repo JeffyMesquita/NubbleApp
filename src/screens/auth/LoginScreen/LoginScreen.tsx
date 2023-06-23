@@ -5,6 +5,7 @@ import {Icon} from '../../../components/Icons/Icon';
 import {Screen} from '../../../components/Screen/Screen';
 import {Text} from '../../../components/Text/Text';
 import {TextInput} from '../../../components/TextInput/TextInput';
+import {PasswordInput} from '../../../components/PasswordInput/PasswordInput';
 
 export function LoginScreen() {
   return (
@@ -25,14 +26,7 @@ export function LoginScreen() {
         }}
       />
 
-      <TextInput
-        label="Senha"
-        placeholder="Digite sua senha"
-        RightComponent={<Icon color="gray2" name="eyeOn" />}
-        boxProps={{
-          mb: 's10',
-        }}
-      />
+      <PasswordInput label="Senha" placeholder="Digite sua senha" />
 
       <Text mt="s10" color="primary" preset="paragraphSmall" bold>
         Esqueci minha senha

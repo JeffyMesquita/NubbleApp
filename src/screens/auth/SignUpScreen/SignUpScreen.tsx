@@ -1,10 +1,11 @@
 import React from 'react';
 
-import { Screen } from '../../../components/Screen/Screen';
-import { Text } from '../../../components/Text/Text';
-import { TextInput } from '../../../components/TextInput/TextInput';
-import { Icon } from '../../../components/Icons/Icon';
-import { Button } from '../../../components/Button/Button';
+import {Screen} from '../../../components/Screen/Screen';
+import {Text} from '../../../components/Text/Text';
+import {TextInput} from '../../../components/TextInput/TextInput';
+import {Icon} from '../../../components/Icons/Icon';
+import {Button} from '../../../components/Button/Button';
+import {PasswordInput} from '../../../components/PasswordInput/PasswordInput';
 
 export function SignUpScreen() {
   function submitForm() {
@@ -39,32 +40,11 @@ export function SignUpScreen() {
           mb: 's20',
         }}
       />
-      <TextInput
-        label="E-mail"
-        placeholder="Digite seu e-mail"
-        boxProps={{
-          mb: 's20',
-        }}
-      />
-      <TextInput
-        label="E-mail"
-        placeholder="Digite seu e-mail"
-        boxProps={{
-          mb: 's20',
-        }}
-      />
-      <TextInput
-        label="E-mail"
-        placeholder="Digite seu e-mail"
-        boxProps={{
-          mb: 's20',
-        }}
-      />
 
-      <TextInput
+      <PasswordInput
         label="Senha"
+        secureTextEntry
         placeholder="Digite sua senha"
-        RightComponent={<Icon color="gray2" name="eyeOn" />}
         boxProps={{
           mb: 's48',
         }}
@@ -73,4 +53,4 @@ export function SignUpScreen() {
       <Button onPress={submitForm} title="Criar uma conta" />
     </Screen>
   );
-};
+}
