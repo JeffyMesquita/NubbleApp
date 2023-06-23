@@ -13,12 +13,14 @@ interface TextInputProps extends RNTextInputProps {
   label: string;
   errorMessage?: string;
   RightComponent?: ReactElement;
+  boxProps?: BoxProps;
 }
 
 export function TextInput({
   label,
   errorMessage,
   RightComponent,
+  boxProps,
   ...rnTextInputProps
 }: TextInputProps) {
   const {colors} = useAppTheme();
@@ -37,31 +39,35 @@ export function TextInput({
   }
 
   return (
-    <Pressable onPress={focusInput}>
-      <Box>
-        <Text mb="s4" preset="paragraphMedium" bold>
-          {label}
-        </Text>
-        <Box {...$textInputContainer}>
-          <RNTextInput
-            ref={inputRef}
-            placeholderTextColor={colors.gray4}
-            style={$textInputStyle}
-            {...rnTextInputProps}
-          />
-          {RightComponent && (
-            <Box ml='s16' justifyContent='center'>
-              {RightComponent}
-            </Box>
+    <Box 
+      {...boxProps}
+    >
+      <Pressable onPress={focusInput}>
+        <Box>
+          <Text mb="s4" preset="paragraphMedium" bold>
+            {label}
+          </Text>
+          <Box {...$textInputContainer}>
+            <RNTextInput
+              ref={inputRef}
+              placeholderTextColor={colors.gray4}
+              style={$textInputStyle}
+              {...rnTextInputProps}
+            />
+            {RightComponent && (
+              <Box ml='s16' justifyContent='center'>
+                {RightComponent}
+              </Box>
+            )}
+          </Box>
+          {errorMessage && (
+            <Text mt="s8" color="error" preset="paragraphSmall" bold>
+              {errorMessage}
+            </Text>
           )}
         </Box>
-        {errorMessage && (
-          <Text mt="s8" color="error" preset="paragraphSmall" bold>
-            {errorMessage}
-          </Text>
-        )}
-      </Box>
-    </Pressable>
+      </Pressable>
+    </Box>
   );
 }
 
