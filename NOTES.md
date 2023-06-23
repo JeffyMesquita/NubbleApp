@@ -233,3 +233,201 @@ export default App;
 ```
 
 
+### 5. Using React Navigation
+
+#### React Navigation
+
+React Navigation is a library that provides a way to navigate between screens and manage navigation state in a React Native app.
+
+#### Installation
+
+To install React Navigation, you need to run the following command:
+
+```bash
+npm install @react-navigation/native
+```
+
+or
+
+```bash
+yarn add @react-navigation/native
+```
+
+If you until not have installed the `react-native-safe-area-context`, you need to run the following command:
+
+```bash
+npm install react-native-safe-area-context
+```
+
+or
+
+```bash
+yarn add react-native-safe-area-context
+```
+
+The next step is install `react-native-screes`, to do this, you need to run the following command:
+
+```bash
+npm install react-native-screens
+```
+
+or
+
+```bash
+yarn add react-native-screens
+```
+
+And following, you need to run the command:
+
+```bash
+cd ios && pod install && cd ..
+```
+
+and following run the command:
+
+```bash
+npm run ios
+```
+
+or
+
+```bash
+yarn ios
+```
+
+In android its necessary one more step, `react-native-screens` package requires you to make some additional changes to complete the installation and link on Android by configuration step to properly work on Android devices. Edit `MainActivity.java` file which located in `android/app/src/main/java/<your package name>/MainActivity.java` and add the following lines:
+
+```java
+public class MainActivity extends ReactActivity {
+  // ...
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(null);
+    }
+  // ...
+}
+```
+
+And add to top of the file:
+
+```java
+import android.os.Bundle; // <- add this necessary import
+```
+
+and too, you need to run the command:
+
+```bash
+npm run android
+```
+
+or
+
+```bash
+yarn android
+```
+
+#### Optional installation steps
+
+You can create a folder `routes` in side of `src` folder, and create a file `index.tsx` in side of `routes` folder and make your routes schema for yous App. 
+
+#### Usage
+
+To use React Navigation, you need to import the NavigationContainer component from `@react-navigation/native` and use in your code, for example:
+
+```typescript
+import React from 'react';
+import {View, Text} from 'react-native';
+import {NavigationContainer} from '@react-navigation/native';
+
+const App = () => {
+  return (
+    <NavigationContainer>
+      <View>
+        <Text>React Navigation</Text>
+      </View>
+    </NavigationContainer>
+  );
+};
+
+export default App;
+```
+
+### 6. Using React Navigation Stack
+
+#### React Navigation Stack
+
+React Navigation Stack is a library that provides a way to navigate between screens and manage navigation state in a React Native app.
+
+#### Installation
+
+To install React Navigation Stack, you need to run the following command:
+
+```bash
+npm install @react-navigation/native-stack
+```
+
+or
+
+```bash
+yarn add @react-navigation/native-stack
+```
+
+Don't forget to run the command:
+
+```bash
+cd ios && pod install && cd ..
+```
+
+and following run the command:
+
+```bash
+npm run ios
+```
+
+or
+
+```bash
+yarn ios
+```
+
+and too, you need to run the command:
+
+```bash
+npm run android
+```
+
+or
+
+```bash
+yarn android
+```
+
+#### Usage
+
+To use React Navigation Stack, you need to import the createStackNavigator component from `@react-navigation/native-stack` and use in your code, for example:
+
+```typescript
+import React from 'react';
+
+import {NavigationContainer} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+
+// Here you can import your screens
+import {Login} from './src/screens/Login';
+import {Home} from './src/screens/Home';
+// ...
+
+const Stack = createNativeStackNavigator();
+
+export function Router() {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="Home" component={Home} />
+        <Stack.Screen name="Login" component={Login} />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+}
+```
+
