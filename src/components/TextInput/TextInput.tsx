@@ -2,15 +2,19 @@ import React from 'react';
 import {
   TextInput as RNTextInput,
   TextInputProps as RNTextInputProps,
+  TextStyle,
 } from 'react-native';
 import {Box, BoxProps} from '../Box/Box';
-import {Text} from '../Text/Text';
+import {$fontFamily, $fontSizes, Text} from '../Text/Text';
+import { useAppTheme } from '../../hooks/useAppTheme';
 
 interface TextInputProps extends RNTextInputProps {
   label: string;
 }
 
 export function TextInput({label, ...rnTextInputProps}: TextInputProps) {
+  const { colors } = useAppTheme();
+
   return (
     <Box>
       <Text mb="s4" preset="paragraphMedium" bold>
@@ -18,14 +22,20 @@ export function TextInput({label, ...rnTextInputProps}: TextInputProps) {
       </Text>
       <Box {...$textInputContainer}>
         <RNTextInput
-          style={{
-            height: 50,
-          }}
+          placeholderTextColor={colors.gray4}
+          style={$textInputStyle}
           {...rnTextInputProps}
         />
       </Box>
     </Box>
   );
+}
+
+const $textInputStyle: TextStyle = {
+  borderWidth: 1,
+  padding: 0,
+  fontFamily: $fontFamily.regular,
+  ...$fontSizes.paragraphMedium,
 }
 
 const $textInputContainer: BoxProps = {
