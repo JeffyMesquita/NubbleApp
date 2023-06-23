@@ -7,7 +7,11 @@ import {Text} from '../../../components/Text/Text';
 import {TextInput} from '../../../components/TextInput/TextInput';
 import {PasswordInput} from '../../../components/PasswordInput/PasswordInput';
 
-export function LoginScreen() {
+export function LoginScreen({navigation}) {
+  function navigateToSignUpScreen() {
+    navigation.navigate('SignUpScreen');
+  }
+
   return (
     <Screen>
       <Text mb="s8" preset="headingLarge">
@@ -34,7 +38,12 @@ export function LoginScreen() {
 
       <Button title="Entrar" mt="s48" />
 
-      <Button title="Criar uma conta" mt="s12" preset="outline" />
+      <Button
+        onPress={navigateToSignUpScreen}
+        title="Criar uma conta"
+        mt="s12"
+        preset="outline"
+      />
     </Screen>
   );
 }
