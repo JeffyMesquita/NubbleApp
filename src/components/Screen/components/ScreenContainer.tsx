@@ -25,6 +25,7 @@ export function ViewContainer({backgroundColor, children}: Props) {
     <View
       style={{
         backgroundColor,
+        flex: 1,
       }}>
       {children}
     </View>
