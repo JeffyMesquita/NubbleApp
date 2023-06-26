@@ -17,7 +17,7 @@ export function SignUpScreen({navigation}: ScreenProps) {
       description:
         'Agora você já pode fazer login e aproveitar todos os recursos do app.',
       icon: {
-        name: 'checkRoundIcon',
+        name: 'checkRound',
         color: 'success',
       },
     });
