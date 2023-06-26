@@ -39,9 +39,7 @@ export function TextInput({
   }
 
   return (
-    <Box 
-      {...boxProps}
-    >
+    <Box {...boxProps}>
       <Pressable onPress={focusInput}>
         <Box>
           <Text mb="s4" preset="paragraphMedium" bold>
@@ -49,13 +47,14 @@ export function TextInput({
           </Text>
           <Box {...$textInputContainer}>
             <RNTextInput
+              autoCapitalize="none"
               ref={inputRef}
               placeholderTextColor={colors.gray4}
               style={$textInputStyle}
               {...rnTextInputProps}
             />
             {RightComponent && (
-              <Box ml='s16' justifyContent='center'>
+              <Box ml="s16" justifyContent="center">
                 {RightComponent}
               </Box>
             )}

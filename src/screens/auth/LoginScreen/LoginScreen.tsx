@@ -1,28 +1,31 @@
-import React, {useEffect, useState} from 'react';
-import {NativeStackScreenProps} from '@react-navigation/native-stack';
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import React from 'react';
+import { Controller, useForm } from 'react-hook-form';
+import { Alert } from 'react-native';
 
-import {Button} from '../../../components/Button/Button';
-import {PasswordInput} from '../../../components/PasswordInput/PasswordInput';
-import {Screen} from '../../../components/Screen/Screen';
-import {Text} from '../../../components/Text/Text';
-import {TextInput} from '../../../components/TextInput/TextInput';
-import {RootStackParamList} from '../../../routes/Routes';
-import {Alert} from 'react-native';
+import { Button } from '../../../components/Button/Button';
+import { PasswordInput } from '../../../components/PasswordInput/PasswordInput';
+import { Screen } from '../../../components/Screen/Screen';
+import { Text } from '../../../components/Text/Text';
+import { TextInput } from '../../../components/TextInput/TextInput';
+import { RootStackParamList } from '../../../routes/Routes';
 
+type LoginFormType = {
+  email: string;
+  password: string;
+};
 type ScreenProps = NativeStackScreenProps<RootStackParamList, 'LoginScreen'>;
 
 export function LoginScreen({navigation}: ScreenProps) {
-  const [email, setEmail] = useState<string>('');
-  const [password, setPassword] = useState<string>('');
+  const {control, formState, handleSubmit} = useForm<LoginFormType>({
+    defaultValues: {
+      email: '',
+      password: '',
+    },
+    mode: 'onChange',
+  });
 
-  const [emailErrorMessage, setEmailErrorMessage] = useState<string>('');
-
-  useEffect(() => {
-    const isValidEmail = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email);
-    setEmailErrorMessage(isValidEmail ? '' : 'E-mail inválido');
-  }, [email]);
-
-  function submitForm() {
+  function submitForm({email, password}: LoginFormType) {
     //TODO: implementar
     Alert.alert(`Email: ${email} ${`\n`} Senha: ${password}`);
   }
@@ -44,27 +47,56 @@ export function LoginScreen({navigation}: ScreenProps) {
         Digite seu e-mail e senha para entrar
       </Text>
 
-      <TextInput
-        value={email}
-        onChangeText={setEmail}
-        errorMessage={emailErrorMessage}
-        label="E-mail"
-        placeholder="Digite seu e-mail"
-        boxProps={{
-          mb: 's20',
+      <Controller
+        control={control}
+        name="email"
+        rules={{
+          required: 'E-mail obrigatório',
+          pattern: {
+            value: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/,
+            message: 'E-mail inválido',
+          },
         }}
+        render={({field, fieldState}) => (
+          <TextInput
+            errorMessage={fieldState.error?.message}
+            value={field.value}
+            onChangeText={field.onChange}
+            label="E-mail"
+            placeholder="Digite seu e-mail"
+            boxProps={{
+              mb: 's20',
+            }}
+          />
+        )}
       />
 
-      <PasswordInput
-        value={password}
-        onChangeText={setPassword}
-        label="Senha"
-        placeholder="Digite sua senha"
+      <Controller
+        control={control}
+        name="password"
+        rules={{
+          required: 'Senha obrigatória',
+          minLength: {
+            value: 8,
+            message: 'Senha deve ter no mínimo 8 caracteres',
+          },
+        }}
+        render={({field, fieldState}) => (
+          <PasswordInput
+            errorMessage={fieldState.error?.message}
+            value={field.value}
+            onChangeText={field.onChange}
+            label="Senha"
+            placeholder="Digite sua senha"
+            boxProps={{
+              mb: 's20',
+            }}
+          />
+        )}
       />
 
       <Text
         onPress={navigateToForgotPasswordScreen}
-        mt="s10"
         color="primary"
         preset="paragraphSmall"
         bold>
@@ -72,8 +104,8 @@ export function LoginScreen({navigation}: ScreenProps) {
       </Text>
 
       <Button
-        disabled={!!emailErrorMessage || password.length < 6}
-        onPress={submitForm}
+        disabled={!formState.isValid}
+        onPress={handleSubmit(submitForm)}
         title="Entrar"
         mt="s48"
       />

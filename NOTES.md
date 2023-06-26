@@ -431,3 +431,69 @@ export function Router() {
 }
 ```
 
+### 7. Using React Hook Form
+
+#### React Hook Form
+
+React Hook Form is a library that provides a way to manage forms in a React Native application.
+
+#### Installation
+
+To install React Hook Form, you need to run the following command:
+
+```bash
+npm install react-hook-form
+```
+
+or
+
+```bash
+yarn add react-hook-form
+```
+
+obs: in this project, we will use the `react-hook-form` in version `7.43.9`, then you need to run the following command:
+
+```bash
+npm install react-hook-form@7.43.9
+```
+
+or
+
+```bash
+yarn add react-hook-form@7.43.9
+```
+
+#### Usage
+
+To use React Hook Form, you need to import the useForm component from `react-hook-form` and use in your code, for example:
+
+```typescript
+import React from 'react';
+import {View, Text} from 'react-native';
+import {useForm} from 'react-hook-form';
+
+const App = () => {
+  const {control, handleSubmit} = useForm();
+
+  const onSubmit = (data: any) => {
+    console.log(data);
+  };
+
+  return (
+    <View>
+      <Text>React Hook Form</Text>
+      <InputText
+        name="name"
+        control={control}
+        placeholder="Name"
+        defaultValue=""
+      >
+      <Button title="Submit" onPress={handleSubmit(onSubmit)} />
+    </View>
+  );
+};
+
+export default App;
+```
+
+
