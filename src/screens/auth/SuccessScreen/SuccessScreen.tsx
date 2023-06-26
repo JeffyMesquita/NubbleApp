@@ -12,12 +12,14 @@ type ScreenPros = NativeStackScreenProps<RootStackParamList, 'SuccessScreen'>;
 
 export function SuccessScreen({
   route,
+  navigation,
 }: ScreenPros
 ) {
   const { title, description, icon} = route?.params;
 
   function goBackToBegin() {
     //TODO: implementar
+    navigation.goBack();
   }
   return (
     <Screen>
