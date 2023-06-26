@@ -1,24 +1,36 @@
 import React from 'react';
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { useRoute } from '@react-navigation/native';
+import { RootStackParamList } from '../../../routes/Routes';
+
 import { Screen } from '../../../components/Screen/Screen';
 import { Icon } from '../../../components/Icons/Icon';
 import { Text } from '../../../components/Text/Text';
 import { Button } from '../../../components/Button/Button';
 
-export function SuccessScreen() {
+type ScreenPros = NativeStackScreenProps<RootStackParamList, 'SuccessScreen'>;
+
+export function SuccessScreen({
+  route,
+}: ScreenPros
+) {
+  const { title, description, icon} = route?.params;
 
   function goBackToBegin() {
     //TODO: implementar
   }
   return (
     <Screen>
-      <Icon name="check" size={80} color="greenPrimary" />
+      <Icon 
+        {...icon}
+      />
 
       <Text mt="s24" mb="s32" preset="headingLarge">
-        Sua conta foi criada com sucesso!
+        {title}
       </Text>
 
       <Text mb="s16" preset="paragraphLarge">
-        Agora você já pode fazer login e aproveitar todos os recursos do app.
+        {description}
       </Text>
 
       <Button 
