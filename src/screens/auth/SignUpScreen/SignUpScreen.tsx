@@ -29,7 +29,7 @@ export function SignUpScreen({navigation}: ScreenProps) {
 
   function submitForm(formValues: SignUpSchema) {
     reset({
-      title: `${formValues.fullName} a sua conta foi criada com sucesso!`,
+      title: `${formValues.fullName}, a sua conta foi criada com sucesso!`,
       description:
         'Agora você já pode fazer login e aproveitar todos os recursos do app.',
       icon: {
