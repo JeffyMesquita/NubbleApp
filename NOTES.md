@@ -642,3 +642,55 @@ And in your `tsconfig.json` file, you need to add the following code:
   }
 }
 ```
+
+After this, you can import your files using the aliases, for example:
+
+```typescript
+import React from 'react';
+import {View, Text} from 'react-native';
+import {Button} from '@components/Button';
+import {InputText} from '@components/InputText';
+
+const App = () => {
+  return (
+    <View>
+      <Text>React Hook Form</Text>
+      <InputText
+        name="name"
+        control={control}
+        placeholder="Name"
+        defaultValue=""
+      >
+      <Button title="Submit" onPress={handleSubmit(onSubmit)} />
+    </View>
+  );
+};
+
+export default App;
+```
+
+### 10. Fixing Warning `Require cycle`
+
+#### Require cycle
+
+Require cycle is a warning that occurs when you import a file that imports the file that is importing it, for example:
+
+```typescript
+// file: src/components/Button/index.tsx
+import React from 'react';
+import {View, Text} from 'react-native';
+import {Button} from '@components/Button'; //♂ here is the problem ♂
+
+const Button = () => {
+  return (
+    <View>
+      <Text>Button</Text>
+    </View>
+  );
+};
+
+export default Button;
+```
+
+To fix this warning, you need go to file what is importing itself and change the import.
+
