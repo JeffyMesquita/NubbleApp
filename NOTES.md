@@ -694,3 +694,84 @@ export default Button;
 
 To fix this warning, you need go to file what is importing itself and change the import.
 
+
+### 11. ESLint
+
+#### ESLint
+
+ESLint is a library that provides a way to check your code for errors and warnings.
+
+#### Installation
+
+To install ESLint, you need to run the following command:
+
+```bash
+npm install eslint --save-dev
+```
+
+or
+
+```bash
+yarn add eslint --dev
+```
+
+#### Usage
+
+To use ESLint, you need to create a file `.eslintrc.js` in the root of your project and add the following code:
+
+```javascript
+module.exports = {
+  root: true,
+  parser: '@typescript-eslint/parser',
+  plugins: ['@typescript-eslint'],
+  extends: [
+    'eslint:recommended',
+    'plugin:@typescript-eslint/recommended',
+    'prettier/@typescript-eslint',
+    'plugin:prettier/recommended',
+  ],
+  rules: {
+    'prettier/prettier': 'error',
+    'no-console': 'warn',
+    'no-debugger': 'warn',
+    'no-unused-vars': 'off',
+    '@typescript-eslint/no-unused-vars': ['error'],
+    'react-hooks/rules-of-hooks': 'error',
+    'react-hooks/exhaustive-deps': 'warn',
+  },
+};
+```
+
+And in your `package.json` file, you need to add the following code:
+
+```json
+{
+  "scripts": {
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx ."
+  }
+}
+```
+
+After this, you can run the following command to check your code:
+
+```bash
+npm run lint
+```
+
+or
+
+```bash
+yarn lint
+```
+
+And you can add plugins how `eslint-plugin-import`, by example:
+
+```bash
+npm install eslint-plugin-import --save-dev
+```
+
+or
+
+```bash
+yarn add eslint-plugin-import --dev
+```

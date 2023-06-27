@@ -1,7 +1,9 @@
-import {useAppTheme} from '@hooks';
-import {ThemeColors} from '@theme';
 import React from 'react';
 import {Pressable} from 'react-native';
+
+import {useAppTheme} from '@hooks';
+import {ThemeColors} from '@theme';
+
 import {ArrowLeftIcon} from '../../assets/icons/ArrowLeftIcon';
 import {ArrowRightIcon} from '../../assets/icons/ArrowRightIcon';
 import {BellIcon} from '../../assets/icons/BellIcon';
@@ -53,12 +55,13 @@ export function Icon({
   const {colors} = useAppTheme();
   const SVGIcon = iconRegistry[name];
 
-  if (onPress)
+  if (onPress) {
     return (
       <Pressable hitSlop={10} onPress={onPress}>
         <SVGIcon color={colors[color]} size={size} />
       </Pressable>
     );
+  }
 
   return <SVGIcon color={colors[color]} size={size} />;
 }

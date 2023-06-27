@@ -1,4 +1,3 @@
-import {useAppTheme} from '@hooks';
 import React, {ReactElement, useRef} from 'react';
 import {
   Pressable,
@@ -6,6 +5,8 @@ import {
   TextInputProps as RNTextInputProps,
   TextStyle,
 } from 'react-native';
+
+import {useAppTheme} from '@hooks';
 
 import {Box, BoxProps} from '../Box/Box';
 import {$fontFamily, $fontSizes, Text} from '../Text/Text';

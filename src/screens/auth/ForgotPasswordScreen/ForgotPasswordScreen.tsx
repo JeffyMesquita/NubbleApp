@@ -1,11 +1,12 @@
-import {zodResolver} from '@hookform/resolvers/zod';
-import {NativeStackScreenProps} from '@react-navigation/native-stack';
-import {RootStackParamList} from '@routes';
 import React from 'react';
 
 import {Button, FormTextInput, Screen, Text} from '@components';
+import {zodResolver} from '@hookform/resolvers/zod';
 import {useResetNavigationSuccess} from '@hooks';
+import {NativeStackScreenProps} from '@react-navigation/native-stack';
+import {RootStackParamList} from '@routes';
 import {useForm} from 'react-hook-form';
+
 import {
   ForgotPasswordSchema,
   forgotPasswordSchema,
@@ -32,7 +33,8 @@ export function ForgotPasswordScreen({navigation}: ScreenProps) {
       title: `Enviamos as instruções  ${'\n'}para o seu e-mail ${
         formValues.email
       }`,
-      description: `Clique no link que enviamos no seu e-mail para recuperar sua senha.`,
+      description:
+        'Clique no link que enviamos no seu e-mail para recuperar sua senha.',
       icon: {
         name: 'messageRound',
         color: 'primary',
