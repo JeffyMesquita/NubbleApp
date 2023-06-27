@@ -28,17 +28,15 @@ export function SignUpScreen({navigation}: ScreenProps) {
   });
 
   function submitForm(formValues: SignUpSchema) {
-    console.log(formValues);
-
-    // reset({
-    //   title: 'Sua conta foi criada com sucesso!',
-    //   description:
-    //     'Agora você já pode fazer login e aproveitar todos os recursos do app.',
-    //   icon: {
-    //     name: 'checkRound',
-    //     color: 'success',
-    //   },
-    // });
+    reset({
+      title: `${formValues.fullName} a sua conta foi criada com sucesso!`,
+      description:
+        'Agora você já pode fazer login e aproveitar todos os recursos do app.',
+      icon: {
+        name: 'checkRound',
+        color: 'success',
+      },
+    });
   }
   return (
     <Screen canGoBack scrollable>
