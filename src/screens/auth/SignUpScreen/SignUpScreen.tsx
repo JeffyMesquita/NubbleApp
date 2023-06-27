@@ -31,6 +31,7 @@ export function SignUpScreen({navigation}: ScreenProps) {
   });
 
   function submitForm(formValues: SignUpSchema) {
+    navigation.isFocused();
     reset({
       title: `${formValues.fullName}, a sua conta foi criada com sucesso!`,
       description:

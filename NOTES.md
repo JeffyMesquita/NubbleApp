@@ -694,7 +694,6 @@ export default Button;
 
 To fix this warning, you need go to file what is importing itself and change the import.
 
-
 ### 11. ESLint
 
 #### ESLint
@@ -774,4 +773,103 @@ or
 
 ```bash
 yarn add eslint-plugin-import --dev
+```
+
+And add the following code in your `.eslintrc.js` file:
+
+```javascript
+module.exports = {
+  root: true,
+  extends: '@react-native-community',
+  //♂ add this code  ♂
+  plugins: ['import'],
+  overrides: [
+    {
+      files: ['*.ts', '*.tsx'],
+      rules: {
+        'import/order': [
+          'error',
+          {
+            groups: ['external', 'builtin', 'internal', 'parent', 'sibling'],
+            pathGroups: [
+              {
+                pattern: 'react+(|-native)',
+                group: 'external',
+                position: 'before',
+              },
+              {
+                pattern: '@domains|routes|screens|components|hooks|theme)',
+                group: 'internal',
+                position: 'before',
+              },
+              {
+                pattern: './',
+                group: 'internal',
+                position: 'before',
+              },
+            ],
+            pathGroupsExcludedImportTypes: ['react+(|-native)'],
+            alphabetize: {
+              order: 'asc',
+              caseInsensitive: true,
+            },
+            'newlines-between': 'always',
+          },
+        ],
+      },
+    },
+  ],
+};
+```
+
+### 12. Husky
+
+#### Husky
+
+Husky is a library that provides a way to run scripts before git commands.
+
+#### Installation
+
+To install Husky, you need to run the following command:
+
+```bash
+npm install husky --save-dev
+```
+
+or
+
+```bash
+yarn add husky -D
+```
+
+#### Usage
+
+To use Husky, you need run the following command:
+
+```bash
+ npm pkg set scripts.prepare="husky install"
+```
+
+or
+
+```bash
+yarn pkg set scripts.prepare="husky install"
+```
+
+and run the following command:
+
+```bash
+npm run prepare
+```
+
+or
+
+```bash
+yarn prepare
+```
+
+And you need run the following command:
+
+```bash
+npx husky add .husky/pre-commit "npm test"
 ```

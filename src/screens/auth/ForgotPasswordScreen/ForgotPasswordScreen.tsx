@@ -29,6 +29,7 @@ export function ForgotPasswordScreen({navigation}: ScreenProps) {
   });
 
   function submitForm(formValues: ForgotPasswordSchema) {
+    navigation.isFocused();
     reset({
       title: `Enviamos as instruções  ${'\n'}para o seu e-mail ${
         formValues.email
