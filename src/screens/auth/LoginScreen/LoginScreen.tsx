@@ -11,7 +11,7 @@ import {
   Screen,
   Text,
 } from '@components';
-import {RootStackParamList} from '../../../routes/Routes';
+import {RootStackParamList} from '@routes';
 import {LoginSchema, loginSchema} from './LoginSchema';
 
 type ScreenProps = NativeStackScreenProps<RootStackParamList, 'LoginScreen'>;

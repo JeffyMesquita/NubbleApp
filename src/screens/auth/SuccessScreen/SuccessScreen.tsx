@@ -1,21 +1,13 @@
+import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import React from 'react';
-import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { useRoute } from '@react-navigation/native';
-import { RootStackParamList } from '../../../routes/Routes';
+import {RootStackParamList} from '../../../routes/Routes';
 
-import { Screen } from '../../../components/Screen/Screen';
-import { Icon } from '../../../components/Icons/Icon';
-import { Text } from '../../../components/Text/Text';
-import { Button } from '../../../components/Button/Button';
+import {Button, Icon, Screen, Text} from '@components';
 
 type ScreenPros = NativeStackScreenProps<RootStackParamList, 'SuccessScreen'>;
 
-export function SuccessScreen({
-  route,
-  navigation,
-}: ScreenPros
-) {
-  const { title, description, icon} = route?.params;
+export function SuccessScreen({route, navigation}: ScreenPros) {
+  const {title, description, icon} = route?.params;
 
   function goBackToBegin() {
     //TODO: implementar
@@ -23,9 +15,7 @@ export function SuccessScreen({
   }
   return (
     <Screen>
-      <Icon 
-        {...icon}
-      />
+      <Icon {...icon} />
 
       <Text mt="s24" mb="s32" preset="headingLarge">
         {title}
@@ -35,11 +25,7 @@ export function SuccessScreen({
         {description}
       </Text>
 
-      <Button 
-        mt="s40"
-        onPress={goBackToBegin}
-        title="Voltar ao início"
-      />
+      <Button mt="s40" onPress={goBackToBegin} title="Voltar ao início" />
     </Screen>
   );
-};
+}

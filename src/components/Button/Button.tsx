@@ -1,10 +1,10 @@
 import {useTheme} from '@shopify/restyle';
+import {Theme} from '@theme';
 import React from 'react';
-import {Theme} from '../../theme/theme';
 import {TouchableOpacityBox, TouchableOpacityBoxProps} from '../Box/Box';
-import {Text} from '../Text/Text';
 import {buttonPresets} from './buttonPresets';
-import {ActivityIndicator} from '../ActivityIndicator/ActivityIndicator';
+
+import {ActivityIndicator, Text} from '@components';
 
 export type ButtonPresets = 'primary' | 'outline';
 
