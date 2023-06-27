@@ -137,7 +137,7 @@ or
 yarn android
 ```
 
-#### Usage 
+#### Usage
 
 Your use SVG in your project, you need to import the SVG component from `react-native-svg` and use in your code, for example:
 
@@ -231,7 +231,6 @@ const App = () => {
 
 export default App;
 ```
-
 
 ### 5. Using React Navigation
 
@@ -328,7 +327,7 @@ yarn android
 
 #### Optional installation steps
 
-You can create a folder `routes` in side of `src` folder, and create a file `index.tsx` in side of `routes` folder and make your routes schema for yous App. 
+You can create a folder `routes` in side of `src` folder, and create a file `index.tsx` in side of `routes` folder and make your routes schema for yous App.
 
 #### Usage
 
@@ -528,7 +527,6 @@ or
 yarn add @hookform/resolvers
 ```
 
-
 #### Usage
 
 To use Zod Validation, you need to import the zod component from `zod` and use in your code, for example:
@@ -571,6 +569,76 @@ const App = () => {
 export default App;
 ```
 
+### 9. Using Babel Plugin Module Resolver
 
+#### Babel Plugin Module Resolver
 
+Babel Plugin Module Resolver is a library that provides a way to create aliases for your project.
 
+#### Installation
+
+To install Babel Plugin Module Resolver, you need to run the following command:
+
+```bash
+npm install babel-plugin-module-resolver --save-dev
+```
+
+or
+
+```bash
+yarn add babel-plugin-module-resolver --dev
+```
+
+#### Usage
+
+To use Babel Plugin Module Resolver, you need to create a file `babel.config.js` in the root of your project and add the following code:
+
+```javascript
+module.exports = {
+  presets: ['module:metro-react-native-babel-preset'],
+  //♂ add this code  ♂
+  plugins: [
+    [
+      'module-resolver',
+      {
+        root: '.',
+        alias: {
+          '@components': './src/components',
+          '@screens': './src/screens',
+          '@routes': './src/routes',
+          '@assets': './src/assets',
+          '@utils': './src/utils',
+          '@services': './src/services',
+          '@contexts': './src/contexts',
+          '@hooks': './src/hooks',
+          '@styles': './src/styles',
+          '@types': './src/types',
+        },
+      },
+    ],
+  ],
+};
+```
+
+And in your `tsconfig.json` file, you need to add the following code:
+
+```json
+{
+  "extends": "@tsconfig/react-native/tsconfig.json",
+  //♂ add this code  ♂
+  "compilerOptions": {
+    "baseUrl": "./",
+    "paths": {
+      // If you want all files to be imported from the root of the project, you can use the following code:
+      "@components/*": ["src/components/*"],
+      "@screens/*": ["src/screens/*"],
+      "@routes/*": ["src/routes/*"],
+      ... // and more
+      // If you want to import files from a specific folder, you can use the following code:
+      "@components": ["src/components"],
+      "@screens": ["src/screens"],
+      "@routes": ["src/routes"],
+    }
+  }
+}
+```
