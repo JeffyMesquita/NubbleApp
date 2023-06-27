@@ -496,4 +496,81 @@ const App = () => {
 export default App;
 ```
 
+### 8. Using Zod Validation
+
+#### Zod Validation
+
+Zod Validation is a library that provides a way to validate forms in a React Native application using the `react-hook-form` library.
+
+#### Installation
+
+To install Zod Validation, you need to run the following command:
+
+```bash
+npm install zod
+```
+
+or
+
+```bash
+yarn add zod
+```
+
+And install the `@hookform/resolvers` library to link `react-hook-form` with `zod`, you need to run the following command:
+
+```bash
+npm install @hookform/resolvers
+```
+
+or
+
+```bash
+yarn add @hookform/resolvers
+```
+
+
+#### Usage
+
+To use Zod Validation, you need to import the zod component from `zod` and use in your code, for example:
+
+```typescript
+import React from 'react';
+import {View, Text} from 'react-native';
+import {useForm} from 'react-hook-form';
+import {zodResolver} from '@hookform/resolvers/zod';
+import {z} from 'zod';
+
+const schema = z.object({
+  name: z.string().min(3).max(50).nonempty(),
+  email: z.string().email(),
+});
+
+const App = () => {
+  const {control, handleSubmit} = useForm({
+    resolver: zodResolver(schema),
+  });
+
+  const onSubmit = (data: any) => {
+    console.log(data);
+  };
+
+  return (
+    <View>
+      <Text>React Hook Form</Text>
+      <InputText
+        name="name"
+        control={control}
+        placeholder="Name"
+        defaultValue=""
+      >
+      <Button title="Submit" onPress={handleSubmit(onSubmit)} />
+    </View>
+  );
+};
+
+export default App;
+```
+
+
+
 
