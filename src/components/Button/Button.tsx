@@ -1,10 +1,10 @@
-import { useTheme } from '@shopify/restyle';
+import {useTheme} from '@shopify/restyle';
 import React from 'react';
-import { Theme } from '../../theme/theme';
-import { TouchableOpacityBox, TouchableOpacityBoxProps } from '../Box/Box';
-import { Text } from '../Text/Text';
-import { buttonPresets } from './buttonPresets';
-import { ActivityIndicator } from '../ActivityIndicator/ActivityIndicator';
+import {Theme} from '../../theme/theme';
+import {TouchableOpacityBox, TouchableOpacityBoxProps} from '../Box/Box';
+import {Text} from '../Text/Text';
+import {buttonPresets} from './buttonPresets';
+import {ActivityIndicator} from '../ActivityIndicator/ActivityIndicator';
 
 export type ButtonPresets = 'primary' | 'outline';
 
@@ -27,6 +27,7 @@ export function Button({
   const buttonPreset = buttonPresets[preset][disabled ? 'disabled' : 'default'];
   return (
     <TouchableOpacityBox
+      activeOpacity={0.7}
       paddingHorizontal="s20"
       height={50}
       alignItems="center"
@@ -36,14 +37,9 @@ export function Button({
       {...buttonPreset.container}
       {...touchableOpacityBoxProps}>
       {loading ? (
-        <ActivityIndicator  
-          color={buttonPreset.content}
-        />
+        <ActivityIndicator color={buttonPreset.content} />
       ) : (
-        <Text
-          preset="paragraphMedium"
-          bold
-          color={buttonPreset.content}>
+        <Text preset="paragraphMedium" bold color={buttonPreset.content}>
           {title}
         </Text>
       )}
