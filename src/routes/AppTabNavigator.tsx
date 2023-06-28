@@ -1,13 +1,17 @@
 import React from 'react';
 
-import {Icon, Text} from '@components';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {
-  HomeScreen,
-  NewPostScreen,
+  BottomTabBarProps,
+  createBottomTabNavigator,
+} from '@react-navigation/bottom-tabs';
+import {
   FavoriteScreen,
+  HomeScreen,
   MyProfileScreen,
+  NewPostScreen,
 } from '@screens';
+
+import {AppTabBar} from './AppTabBar';
 
 export type AppTabBottomTabParamList = {
   HomeScreen: undefined;
@@ -18,32 +22,18 @@ export type AppTabBottomTabParamList = {
 const Tab = createBottomTabNavigator<AppTabBottomTabParamList>();
 
 export function AppTabNavigator() {
+  function renderTabBar(props: BottomTabBarProps) {
+    return <AppTabBar {...props} />;
+  }
+
   return (
     <Tab.Navigator
+      tabBar={renderTabBar}
       screenOptions={{
         headerShown: false,
       }}
       initialRouteName="HomeScreen">
-      <Tab.Screen
-        name="HomeScreen"
-        component={HomeScreen}
-        options={{
-          tabBarLabel: ({focused}) => (
-            <Text
-              preset="paragraphCaption"
-              semiBold
-              color={focused ? 'primary' : 'backgroundContrast'}>
-              Início
-            </Text>
-          ),
-          tabBarIcon: ({focused}) => (
-            <Icon
-              name={focused ? 'homeFill' : 'home'}
-              color={focused ? 'primary' : 'backgroundContrast'}
-            />
-          ),
-        }}
-      />
+      <Tab.Screen name="HomeScreen" component={HomeScreen} />
       <Tab.Screen name="NewPostScreen" component={NewPostScreen} />
       <Tab.Screen name="FavoriteScreen" component={FavoriteScreen} />
       <Tab.Screen name="MyProfileScreen" component={MyProfileScreen} />
