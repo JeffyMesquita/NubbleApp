@@ -877,3 +877,53 @@ And you need run the following command:
 ```bash
 npx husky add .husky/pre-commit "npm test"
 ```
+
+or
+
+```bash
+npx husky add .husky/pre-commit "yarn test"
+```
+
+### 13. React Navigation Bottom Tabs
+
+#### React Navigation Bottom Tabs
+
+React Navigation Bottom Tabs is a library that provides a way to create a bottom tab navigation.
+
+#### Installation
+
+To install React Navigation Bottom Tabs, you need to run the following command:
+
+```bash
+npm install @react-navigation/bottom-tabs
+```
+
+or
+
+```bash
+yarn add @react-navigation/bottom-tabs
+```
+
+#### Usage
+
+To use React Navigation Bottom Tabs, you need to import the library and create a bottom tab navigation, for example:
+
+```typescript
+import React from 'react';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import {Home} from '@screens/Home';
+import {Profile} from '@screens/Profile';
+
+const Tab = createBottomTabNavigator();
+****
+const App = () => {
+  return (
+    <Tab.Navigator>
+      <Tab.Screen name="Home" component={Home} />
+      <Tab.Screen name="Profile" component={Profile} />
+    </Tab.Navigator>
+  );
+};
+
+export default App;
+```
