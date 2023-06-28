@@ -30,8 +30,6 @@ export function AppTabBar({state, descriptors, navigation}: BottomTabBarProps) {
       {state.routes.map((route, index) => {
         const {options} = descriptors[route.key];
 
-        console.log(route.name, '=> routeName');
-
         const tabItem =
           mapScreenToProps[route.name as keyof typeof mapScreenToProps];
 

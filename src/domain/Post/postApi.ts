@@ -3,11 +3,12 @@ import {Post} from './types';
 
 async function getList(): Promise<Post[]> {
   //TODO: Simulate API call with a delay
-  return new Promise(resolve => {
+  await new Promise(resolve => {
     setTimeout(() => {
-      resolve(postListMock);
-    }, 500);
+      resolve('resolved');
+    }, 1000);
   });
+  return postListMock;
 }
 
 export const postApi = {
