@@ -3,8 +3,7 @@ import React from 'react';
 import {Button, FormTextInput, Screen, Text} from '@components';
 import {zodResolver} from '@hookform/resolvers/zod';
 import {useResetNavigationSuccess} from '@hooks';
-import {NativeStackScreenProps} from '@react-navigation/native-stack';
-import {RootStackParamList} from '@routes';
+import {AuthScreenProps} from '@routes';
 import {useForm} from 'react-hook-form';
 
 import {
@@ -12,12 +11,10 @@ import {
   forgotPasswordSchema,
 } from './ForgotPasswordSchema';
 
-type ScreenProps = NativeStackScreenProps<
-  RootStackParamList,
-  'ForgotPasswordScreen'
->;
-
-export function ForgotPasswordScreen({navigation}: ScreenProps) {
+export function ForgotPasswordScreen({
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  navigation,
+}: AuthScreenProps<'ForgotPasswordScreen'>) {
   const {reset} = useResetNavigationSuccess();
 
   const {control, formState, handleSubmit} = useForm<ForgotPasswordSchema>({
@@ -29,7 +26,6 @@ export function ForgotPasswordScreen({navigation}: ScreenProps) {
   });
 
   function submitForm(formValues: ForgotPasswordSchema) {
-    navigation.isFocused();
     reset({
       title: `Enviamos as instruções  ${'\n'}para o seu e-mail ${
         formValues.email

@@ -9,15 +9,13 @@ import {
 } from '@components';
 import {zodResolver} from '@hookform/resolvers/zod';
 import {useResetNavigationSuccess} from '@hooks';
-import {NativeStackScreenProps} from '@react-navigation/native-stack';
-import {RootStackParamList} from '@routes';
+import {AuthScreenProps} from '@routes';
 import {useForm} from 'react-hook-form';
 
 import {SignUpSchema, signUpSchema} from './SignUpSchema';
 
-type ScreenProps = NativeStackScreenProps<RootStackParamList, 'SignUpScreen'>;
-
-export function SignUpScreen({navigation}: ScreenProps) {
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+export function SignUpScreen({navigation}: AuthScreenProps<'SignUpScreen'>) {
   const {reset} = useResetNavigationSuccess();
   const {control, formState, handleSubmit} = useForm<SignUpSchema>({
     resolver: zodResolver(signUpSchema),
@@ -31,7 +29,6 @@ export function SignUpScreen({navigation}: ScreenProps) {
   });
 
   function submitForm(formValues: SignUpSchema) {
-    navigation.isFocused();
     reset({
       title: `${formValues.fullName}, a sua conta foi criada com sucesso!`,
       description:

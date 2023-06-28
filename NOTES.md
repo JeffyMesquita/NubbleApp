@@ -781,6 +781,10 @@ And add the following code in your `.eslintrc.js` file:
 module.exports = {
   root: true,
   extends: '@react-native-community',
+  // to fix `Delete `␍`eslint prettier/prettier` add this code
+  rules: {
+    'prettier/prettier': 0,
+  },
   //♂ add this code  ♂
   plugins: ['import'],
   overrides: [
