@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
-import {Dimensions, FlatList, Image, ListRenderItemInfo} from 'react-native';
+import {FlatList, ListRenderItemInfo} from 'react-native';
 
-import {Box, Screen, Text} from '@components';
+import {PostItem, Screen} from '@components';
 import {Post, postService} from '@domain';
 import {AppTabScreenProps} from '@routes';
 
@@ -14,27 +14,7 @@ export function HomeScreen({navigation}: AppTabScreenProps<'HomeScreen'>) {
   }, []);
 
   function renderItem({item}: ListRenderItemInfo<Post>) {
-    return (
-      <Box gap="s4" mb="s24">
-        <Box flexDirection="row" gap="s8">
-          <Image
-            source={{uri: item.author.profileURL}}
-            style={{
-              width: 32,
-              height: 32,
-              borderRadius: 16,
-            }}
-          />
-          <Text semiBold>{item.author.userName}</Text>
-        </Box>
-        <Image
-          source={{uri: item.imageURL}}
-          resizeMode="cover"
-          style={{width: Dimensions.get('screen').width, height: 250}}
-        />
-        <Text>{item.text}</Text>
-      </Box>
-    );
+    return <PostItem post={item} />;
   }
 
   return (
