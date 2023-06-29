@@ -1,9 +1,10 @@
 import React from 'react';
 
-import {Box, Text} from '@components';
+import {Box} from '@components';
 import {Post} from '@domain';
 
 import {PostActions} from './components/PostActions';
+import {PostBottom} from './components/PostBottom';
 import {PostHeader} from './components/PostHeader';
 import {PostImage} from './components/PostImage';
 
@@ -21,7 +22,11 @@ export function PostItem({post}: Props) {
         commentCount={post.commentCount}
         favoriteCount={post.favoriteCount}
       />
-      <Text>{post.text}</Text>
+      <PostBottom
+        author={post.author}
+        text={post.text}
+        commentCount={post.commentCount}
+      />
     </Box>
   );
 }
