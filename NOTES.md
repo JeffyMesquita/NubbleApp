@@ -927,3 +927,45 @@ const App = () => {
 
 export default App;
 ```
+
+### 14. React devtools
+
+#### React devtools
+
+React devtools is a library that provides a way to inspect React components.
+
+#### Installation
+
+To install React devtools, you need to run the following command:
+
+```bash
+npm install -g react-devtools
+```
+
+or
+
+```bash
+yarn global add react-devtools
+```
+
+#### Usage
+
+To use React devtools, you need to run the following command:
+
+```bash
+react-devtools
+```
+
+Some commands to use in React devtools to access adb:
+
+```bash
+adb reverse tcp:8097 tcp:8097
+```
+
+```bash
+adb reverse --list
+```
+
+```bash
+adb devices
+```
