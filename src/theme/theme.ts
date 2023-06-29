@@ -11,13 +11,13 @@ export const palette = {
   redError: '#EA3838',
   redErrorLight: '#FBECEC',
 
-  grayBlack: '#000000',
+  grayBlack: '#09090B',
   gray1: '#636363',
   gray2: '#8E8E8E',
   gray3: '#B3B3B3',
   gray4: '#E1E1E1',
   gray5: '#F5F5F5',
-  grayWhite: '#FFFFFF',
+  grayWhite: '#FAFAFA',
 };
 
 export const theme = createTheme({
@@ -38,6 +38,7 @@ export const theme = createTheme({
     successLight: palette.greenSuccessLight,
 
     market: palette.carrotSecondary,
+    marketLight: palette.carrotSecondaryLight,
   },
   spacing: {
     s4: 4,
