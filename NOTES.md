@@ -969,3 +969,23 @@ adb reverse --list
 ```bash
 adb devices
 ```
+
+### 15. Installing Axios
+
+#### Axios
+
+Axios is a library that provides a way to make HTTP requests.
+
+#### Installation
+
+To install Axios, you need to run the following command:
+
+```bash
+npm install axios
+```
+
+or
+
+```bash
+yarn add axios
+```
