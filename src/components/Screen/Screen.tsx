@@ -8,9 +8,10 @@ import {useNavigation} from '@react-navigation/native';
 import {ScrollViewContainer, ViewContainer} from './components/ScreenContainer';
 
 interface ScreenProps extends BoxProps {
+  children: React.ReactNode;
   canGoBack?: boolean;
   scrollable?: boolean;
-  children: React.ReactNode;
+  title?: string;
 }
 
 export function Screen({
