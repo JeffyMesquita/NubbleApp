@@ -14,6 +14,7 @@ export function usePostList() {
       setError(null);
       setLoading(true);
       const {data, meta} = await postService.getList(1);
+
       setPostList(data);
       if (meta.currentPage) {
         setPage(2);

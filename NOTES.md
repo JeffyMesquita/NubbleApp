@@ -970,6 +970,12 @@ adb reverse --list
 adb devices
 ```
 
+Don't forget to enable the connection of the device with localhost API it's necessary to run the following command:
+
+```bash
+adb reverse tcp:3333 tcp:3333
+```
+
 ### 15. Installing Axios
 
 #### Axios
