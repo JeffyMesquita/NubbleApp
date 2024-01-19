@@ -1,9 +1,22 @@
 import axios from 'axios';
 
+/**
+ * Cria uma instância do axios com a configuração base da API
+ * Create an axios instance with the base configuration of the API
+ * @see
+ * - in Development:
+ *  - Don't forget to start the server and the database
+ *  - May be necessary to change the baseURL
+ *  - May be necessary to change the Authorization token
+ *  - May be necessary to change the port
+ *    - `adb reverse tcp:3333 tcp:3333`
+ *
+ */
+
 export const api = axios.create({
   baseURL: 'http://127.0.0.1:3333/',
   headers: {
     Authorization:
-      'Bearer Mg.2Uw7J25vOuIZhtrgxGcNAyG1mm0unqD8m6v1AKDfbICwlWBmm1qpW-74Quk4',
+      'Bearer Mw.-9SWO_3opPQzjjZYsygi4iRo8lcA_C8k2upBvQa7k5RQ58oXxE8kbEcjHTEA',
   },
 });
