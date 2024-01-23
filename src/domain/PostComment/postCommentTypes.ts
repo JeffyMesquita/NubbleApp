@@ -2,6 +2,7 @@ export interface PostComment {
   id: number; // 107;
   message: string; // 'Ad excepturi reiciendis.';
   createdAt: string; // '2023-07-27T01:47:42.000-03:00';
+  createdAtRelative: string; // '2 hours ago';
   author: {
     id: number; // 8;
     profileUrl: string; // 'https://nubble-development.s3.sa-east-1.amazonaws.com/backend-integration/3-gabriel.png';

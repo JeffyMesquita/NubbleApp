@@ -995,3 +995,23 @@ or
 ```bash
 yarn add axios
 ```
+
+### 16. Installing date-fns
+
+#### date-fns
+
+date-fns is a library that provides a way to format dates.
+
+#### Installation
+
+To install date-fns, you need to run the following command:
+
+```bash
+npm install date-fns
+```
+
+or
+
+```bash
+yarn add date-fns
+```
