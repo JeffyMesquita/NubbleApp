@@ -16,9 +16,8 @@ export function usePaginatedList<Data>(
       setError(null);
       setLoading(true);
       const {data, meta} = await getList(1);
-
       setList(data);
-      if (meta.currentPage) {
+      if (meta.hasNextPage) {
         setPage(2);
       } else {
         setHasNextPage(false);
@@ -29,17 +28,15 @@ export function usePaginatedList<Data>(
       setLoading(false);
     }
   }
-
   async function fetchNextPage() {
     if (loading || !hasNextPage) {
       return;
     }
-
     try {
       setLoading(true);
       const {data, meta} = await getList(page);
       setList(prev => [...prev, ...data]);
-      if (meta.currentPage) {
+      if (meta.hasNextPage) {
         setPage(prev => prev + 1);
       } else {
         setHasNextPage(false);
@@ -50,17 +47,16 @@ export function usePaginatedList<Data>(
       setLoading(false);
     }
   }
-
   useEffect(() => {
     fetchInitialData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
   return {
     list,
     error,
     loading,
     refresh: fetchInitialData,
     fetchNextPage,
+    hasNextPage,
   };
 }
