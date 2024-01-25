@@ -12,7 +12,7 @@ import {Text} from '../Text/Text';
 import {$textInputStyle} from '../TextInput/TextInput';
 
 interface TextMessageProps extends RNTextInputProps {
-  onPressSend: () => void;
+  onPressSend: (message: string) => void;
 }
 
 export function TextMessage({
@@ -46,7 +46,9 @@ export function TextMessage({
           style={[$textInputStyle, {color: colors.gray1}]}
           {...rnTextInputProps}
         />
-        <Pressable onPress={onPressSend} disabled={sendIsDisabled}>
+        <Pressable
+          onPress={() => onPressSend(value || '')}
+          disabled={sendIsDisabled}>
           <Text color="primary" bold>
             Enviar{' '}
           </Text>
