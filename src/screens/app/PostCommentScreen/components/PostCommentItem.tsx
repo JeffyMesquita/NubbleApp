@@ -23,9 +23,10 @@ export function PostCommentItem({
     onSuccess: () => {
       onRemoveComment();
       showToast({
-        message: 'Comentário deletado com.',
+        message: 'Comentário deletado.',
         type: 'success',
-        duration: 1500,
+        position: 'bottom',
+        duration: 5000,
       });
     },
   });
