@@ -3,6 +3,7 @@ import {Alert, Pressable} from 'react-native';
 
 import {Box, ProfileAvatar, Text} from '@components';
 import {PostComment, postCommentService, usePostCommentRemove} from '@domain';
+import {useToast} from '@services';
 
 interface Props {
   postComment: PostComment;
@@ -17,9 +18,15 @@ export function PostCommentItem({
   postAuthorId,
   onRemoveComment,
 }: Props) {
+  const {showToast} = useToast();
   const {mutate} = usePostCommentRemove({
     onSuccess: () => {
       onRemoveComment();
+      showToast({
+        message: 'Comentário deletado com.',
+        type: 'success',
+        duration: 1500,
+      });
     },
   });
 

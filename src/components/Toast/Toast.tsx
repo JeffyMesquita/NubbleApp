@@ -1,6 +1,7 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Dimensions} from 'react-native';
 
+import {useToast} from '@services';
 import {$shadowProps} from '@theme';
 
 import {Box, BoxProps} from '../Box/Box';
@@ -10,6 +11,20 @@ import {Text} from '../Text/Text';
 const MAX_WIDTH = Dimensions.get('screen').width * 0.95;
 
 export function Toast() {
+  const {toast, hiddenToast} = useToast();
+
+  useEffect(() => {
+    if (toast) {
+      setTimeout(() => {
+        hiddenToast();
+      }, toast.duration || 2000);
+    }
+  }, [toast, hiddenToast]);
+
+  if (!toast) {
+    return null;
+  }
+
   return (
     <Box top={100} {...$boxStyle}>
       <Icon name="checkRound" color="success" />
@@ -19,7 +34,8 @@ export function Toast() {
         }}
         preset="paragraphMedium"
         bold>
-        Toast Component
+        Toast Component with a very long text to test the flex shrink property
+        and the ellipsis
       </Text>
     </Box>
   );
