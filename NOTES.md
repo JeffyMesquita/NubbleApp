@@ -1015,3 +1015,23 @@ or
 ```bash
 yarn add date-fns
 ```
+
+### 17. Installing zustand
+
+#### zustand
+
+zustand is a library that provides a way to manage state in a React application.
+
+#### Installation
+
+To install zustand, you need to run the following command:
+
+```bash
+npm install zustand
+```
+
+or
+
+```bash
+yarn add zustand
+```
