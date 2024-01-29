@@ -2,7 +2,7 @@
 import React from 'react';
 import {Dimensions} from 'react-native';
 
-import {Toast, ToastType, ToastPosition} from '@services';
+import {Toast, ToastType} from '@services';
 import {$shadowProps} from '@theme';
 
 import {Box, BoxProps} from '../../Box/Box';
@@ -16,11 +16,10 @@ interface Props {
 }
 
 export function ToastContent({toast}: Props) {
-  const position: ToastPosition = toast?.position || 'top';
   const type: ToastType = toast?.type || 'success';
 
   return (
-    <Box {...$boxStyle} style={[{[position]: 100}, $shadowProps]}>
+    <Box {...$boxStyle} style={$shadowProps}>
       <Icon {...mapTypeToIcon[type]} />
       <Text
         style={{
@@ -46,9 +45,7 @@ const mapTypeToIcon: Record<ToastType, IconProps> = {
 };
 
 const $boxStyle: BoxProps = {
-  position: 'absolute',
   backgroundColor: 'background',
-  alignSelf: 'center',
   alignItems: 'center',
   borderRadius: 's16',
   padding: 's16',
