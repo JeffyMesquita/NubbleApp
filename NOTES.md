@@ -1035,3 +1035,42 @@ or
 ```bash
 yarn add zustand
 ```
+
+### 18. Installing react-query (TanStack)
+
+#### react-query
+
+react-query is a library that provides a way to manage state in a React application.
+[TanStack Query v4](https://tanstack.com/query/v4/docs/framework/react/overview)
+
+#### Installation
+
+To install react-query, you need to run the following command:
+
+```bash
+npm install @tanstack/react-query
+```
+
+or
+
+```bash
+yarn add @tanstack/react-query
+```
+
+or
+
+```bash
+$ pnpm add @tanstack/react-query
+```
+
+#### installation eslint-plugin-react-query
+
+```bash
+npm install -D @tanstack/eslint-plugin-query
+```
+
+or
+
+```bash
+yarn add -D @tanstack/eslint-plugin-query
+```
