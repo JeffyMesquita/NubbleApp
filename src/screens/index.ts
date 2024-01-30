@@ -8,6 +8,7 @@ export * from './auth/SuccessScreen/SuccessScreen';
 export * from './app/HomeScreen/HomeScreen';
 export * from './app/PostCommentScreen/PostCommentScreen';
 export * from './app/SettingsScreen/SettingsScreen';
+export * from './app/ProfileScreen/ProfileScreen';
 
 // Tab Screens
 export * from './app/FavoriteScreen/FavoriteScreen';
