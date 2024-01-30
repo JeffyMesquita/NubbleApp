@@ -1042,6 +1042,7 @@ yarn add zustand
 
 react-query is a library that provides a way to manage state in a React application.
 [TanStack Query v4](https://tanstack.com/query/v4/docs/framework/react/overview)
+[useQuery](https://tanstack.com/query/v4/docs/framework/react/reference/useQuery)
 
 #### Installation
 
