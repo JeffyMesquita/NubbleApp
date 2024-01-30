@@ -1,62 +1,40 @@
-import {useEffect, useState} from 'react';
-
+import {useInfiniteQuery} from '@tanstack/react-query';
 import {Page} from '@types';
 
+export interface UsePaginatedListResult<TData> {
+  list: TData[];
+  isError: boolean | null;
+  isLoading: boolean;
+  refresh: () => void;
+  fetchNextPage: () => void;
+  hasNextPage: boolean;
+}
 export function usePaginatedList<Data>(
+  queryKey: readonly unknown[],
   getList: (page: number) => Promise<Page<Data>>,
-) {
-  const [list, setList] = useState<Data[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
-  const [error, setError] = useState<boolean | null>(null);
-  const [page, setPage] = useState<number>(1);
-  const [hasNextPage, setHasNextPage] = useState<boolean>(true);
+): UsePaginatedListResult<Data> {
+  const {data, isError, isLoading, fetchNextPage, hasNextPage, refetch} =
+    useInfiniteQuery({
+      queryKey,
+      queryFn: ({pageParam = 1}) => getList(pageParam),
+      getNextPageParam: ({meta}) =>
+        meta.currentPage < meta.lastPage ? meta.currentPage + 1 : null,
+    });
 
-  async function fetchInitialData() {
-    try {
-      setError(null);
-      setLoading(true);
-      const {data, meta} = await getList(1);
-      setList(data);
-      if (meta.hasNextPage) {
-        setPage(2);
-      } else {
-        setHasNextPage(false);
-      }
-    } catch (er) {
-      setError(true);
-    } finally {
-      setLoading(false);
+  const list = data?.pages.flatMap(page => page.data) || [];
+
+  const fetchNextPageIfPossible = () => {
+    if (hasNextPage) {
+      fetchNextPage();
     }
-  }
-  async function fetchNextPage() {
-    if (loading || !hasNextPage) {
-      return;
-    }
-    try {
-      setLoading(true);
-      const {data, meta} = await getList(page);
-      setList(prev => [...prev, ...data]);
-      if (meta.hasNextPage) {
-        setPage(prev => prev + 1);
-      } else {
-        setHasNextPage(false);
-      }
-    } catch (er) {
-      setError(true);
-    } finally {
-      setLoading(false);
-    }
-  }
-  useEffect(() => {
-    fetchInitialData();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  };
+
   return {
     list,
-    error,
-    loading,
-    refresh: fetchInitialData,
-    fetchNextPage,
-    hasNextPage,
+    isError,
+    isLoading,
+    refresh: refetch,
+    fetchNextPage: fetchNextPageIfPossible,
+    hasNextPage: !!hasNextPage,
   };
 }

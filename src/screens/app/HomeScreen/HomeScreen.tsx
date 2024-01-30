@@ -14,24 +14,19 @@ import {AppTabScreenProps} from '@routes';
 
 import {HomeEmpty} from './components/HomeEmpty';
 import {HomeHeader} from './components/HomeHeader';
-
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-export function HomeScreen({navigation}: AppTabScreenProps<'HomeScreen'>) {
+export function HomeScreen({}: AppTabScreenProps<'HomeScreen'>) {
   const {
-    loading,
-    error,
     list: postList,
+    isError,
+    isLoading,
     refresh,
     fetchNextPage,
   } = usePostList();
-
   const flatListRef = React.useRef<FlatList<Post>>(null);
   useScrollToTop(flatListRef);
-
   function renderItem({item}: ListRenderItemInfo<Post>) {
     return <PostItem post={item} />;
   }
-
   return (
     <Screen style={$screen}>
       <FlatList
@@ -41,21 +36,20 @@ export function HomeScreen({navigation}: AppTabScreenProps<'HomeScreen'>) {
         keyExtractor={item => item.id.toString()}
         renderItem={renderItem}
         onEndReached={fetchNextPage}
-        onEndReachedThreshold={0.2}
-        refreshing={loading}
+        onEndReachedThreshold={0.1}
+        refreshing={isLoading}
         refreshControl={
-          <RefreshControl refreshing={loading} onRefresh={refresh} />
+          <RefreshControl refreshing={isLoading} onRefresh={refresh} />
         }
         contentContainerStyle={{flex: postList.length === 0 ? 1 : undefined}}
         ListHeaderComponent={<HomeHeader />}
         ListEmptyComponent={
-          <HomeEmpty loading={loading} error={error} refetch={refresh} />
+          <HomeEmpty refetch={refresh} error={isError} loading={isLoading} />
         }
       />
     </Screen>
   );
 }
-
 const $screen: StyleProp<ViewStyle> = {
   paddingTop: 0,
   paddingBottom: 0,
