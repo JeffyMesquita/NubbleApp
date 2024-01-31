@@ -6,6 +6,10 @@ export interface MutationOptions<TData> {
   errorMessage?: string;
 }
 
+/**
+ *
+ * @deprecated use useMutation from `@tanstack/react-query` instead
+ */
 export function useMutation<TVariable, TData>(
   mutationFn: (variables: TVariable) => Promise<TData>,
   options?: MutationOptions<TData>,
