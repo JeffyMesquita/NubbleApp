@@ -4,7 +4,7 @@ import {User} from './userTypes';
 
 async function getById(id: number): Promise<User> {
   const userAPI = await userApi.getById(id.toString());
-  return userAdapter.adapt(userAPI);
+  return userAdapter.toUser(userAPI);
 }
 
 export const userService = {

@@ -14,5 +14,5 @@ function toUser(userAPI: UserAPI): User {
 }
 
 export const userAdapter = {
-  adapt: toUser,
+  toUser,
 };
