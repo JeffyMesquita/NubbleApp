@@ -5,7 +5,7 @@ export interface PostComment {
   createdAtRelative: string; // '2 hours ago';
   author: {
     id: number; // 8;
-    profileUrl: string; // 'https://nubble-development.s3.sa-east-1.amazonaws.com/backend-integration/3-gabriel.png';
+    profileURL: string; // 'https://nubble-development.s3.sa-east-1.amazonaws.com/backend-integration/3-gabriel.png';
     name: string; // 'Gabriel Lemos';
     userName: string; // 'glemos';
   };
