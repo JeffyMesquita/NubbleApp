@@ -1075,3 +1075,35 @@ or
 ```bash
 yarn add -D @tanstack/eslint-plugin-query
 ```
+
+### 19. Installing AsyncStorage
+
+#### AsyncStorage
+
+AsyncStorage is a library that provides a way to store data in a React Native application.
+
+#### Installation
+
+To install AsyncStorage, you need to run the following command:
+
+```bash
+yarn add @react-native-async-storage/async-storage
+```
+
+in android you need rerun the command:
+
+```bash
+yarn android
+```
+
+in ios you need rerun the command:
+
+```bash
+cd ios && pod install && cd ..
+```
+
+and rerun the command:
+
+```bash
+yarn ios
+```
