@@ -2,4 +2,4 @@ export * from './toast';
 
 export * from './authCredentials';
 
-export * from './storage/storage';
+export * from './storage';

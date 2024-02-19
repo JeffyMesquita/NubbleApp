@@ -2,7 +2,11 @@ import React from 'react';
 
 import {Toast} from '@components';
 // import {ToastProvider} from '@services';
-import {AuthCredentialsProvider} from '@services';
+import {
+  AuthCredentialsProvider,
+  MMKVStorage,
+  initializeStorage,
+} from '@services';
 import {ThemeProvider} from '@shopify/restyle';
 import {QueryClientProvider, QueryClient} from '@tanstack/react-query';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
@@ -11,6 +15,7 @@ import {Router} from './src/routes/Routes';
 import {theme} from './src/theme/theme';
 
 const queryClient = new QueryClient();
+initializeStorage(MMKVStorage);
 
 function App(): JSX.Element {
   return (

@@ -1107,3 +1107,41 @@ and rerun the command:
 ```bash
 yarn ios
 ```
+
+### 20. Installing react-native-mmkv
+
+#### react-native-mmkv
+
+react-native-mmkv is a library that provides a way to store data in a React Native application.
+
+#### Installation
+
+To install react-native-mmkv, you need to run the following command:
+
+```bash
+yarn add react-native-mmkv
+```
+
+in android you need rerun the command:
+
+```bash
+yarn android
+```
+
+in ios you need rerun the command:
+
+```bash
+cd ios && pod install && cd ..
+```
+
+and rerun the command:
+
+```bash
+yarn ios
+```
+
+can be necessary to run the following command:
+
+```bash
+npx react-native run-android
+```
