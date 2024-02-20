@@ -1,13 +1,14 @@
 import React from 'react';
 
 import {
+  ActivityIndicator,
   Button,
   FormPasswordInput,
   FormTextInput,
   Screen,
   Text,
 } from '@components';
-import {useAuthSignUp} from '@domain';
+import {useAuthSignUp, useAuthIsUsernameAvailable} from '@domain';
 import {zodResolver} from '@hookform/resolvers/zod';
 import {useResetNavigationSuccess} from '@hooks';
 import {AuthScreenProps, AuthStackParamList} from '@routes';
@@ -40,7 +41,7 @@ export function SignUpScreen({}: AuthScreenProps<'SignUpScreen'>) {
       reset(resetParam);
     },
   });
-  const {control, formState, handleSubmit} = useForm<SignUpSchema>({
+  const {control, formState, handleSubmit, watch} = useForm<SignUpSchema>({
     resolver: zodResolver(signUpSchema),
     defaultValues,
     mode: 'onChange',
@@ -49,6 +50,10 @@ export function SignUpScreen({}: AuthScreenProps<'SignUpScreen'>) {
   function submitForm(formValues: SignUpSchema) {
     signUp(formValues);
   }
+
+  const username = watch('username');
+  const usernameQuery = useAuthIsUsernameAvailable({username});
+
   return (
     <Screen canGoBack scrollable>
       <Text mb="s32" preset="headingLarge">
@@ -63,6 +68,11 @@ export function SignUpScreen({}: AuthScreenProps<'SignUpScreen'>) {
         boxProps={{
           mb: 's20',
         }}
+        RightComponent={
+          usernameQuery.isFetching ? (
+            <ActivityIndicator size="small" />
+          ) : undefined
+        }
       />
 
       <FormTextInput
