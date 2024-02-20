@@ -57,8 +57,10 @@ export function SignUpScreen({}: AuthScreenProps<'SignUpScreen'>) {
   const usernameIsValid = !usernameState.invalid && !usernameState.isDirty;
   const usernameQuery = useAuthIsUsernameAvailable({
     username,
-    enable: usernameIsValid,
+    enable: !usernameIsValid,
   });
+
+  console.log('usernameQuery', usernameQuery);
 
   return (
     <Screen canGoBack scrollable>
