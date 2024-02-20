@@ -6,9 +6,10 @@ import {authService} from '../authService';
 
 interface Param {
   username: string;
+  enable: boolean;
 }
 
-export function useAuthIsUsernameAvailable({username}: Param) {
+export function useAuthIsUsernameAvailable({username, enable}: Param) {
   const debouncedUsername = useDebounce(username, 1500);
 
   const {data, isFetching} = useQuery({
@@ -16,10 +17,13 @@ export function useAuthIsUsernameAvailable({username}: Param) {
     queryFn: () => authService.isUserNameAvailable(debouncedUsername),
     retry: false,
     staleTime: 20000,
+    enabled: enable && debouncedUsername.length > 0,
   });
+
+  const isDebouncing = debouncedUsername !== username;
 
   return {
     isAvailable: !!data,
-    isFetching,
+    isFetching: isFetching || isDebouncing,
   };
 }
