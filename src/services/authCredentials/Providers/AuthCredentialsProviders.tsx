@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import {createContext, useState} from 'react';
 
 import {api} from '@api';
-import {AuthCredentials, authService} from '@domain';
+import {AuthCredentials, authApi, authService} from '@domain';
 
 import {authCredentialsStorage} from '../authCredentialsStorage';
 import {AuthCredentialsService} from '../authCredentialsTypes';
@@ -58,13 +58,21 @@ export function AuthCredentialsProvider({
     const interceptor = api.interceptors.response.use(
       response => response,
       async responseError => {
+        const failedRequest = responseError.config;
+        const hasNotRefreshToken = !authCredentials?.refreshToken;
+        const isRefreshTokenRequest =
+          authApi.isRefreshTokenRequest(failedRequest);
         if (responseError.response.status === 401) {
-          if (!authCredentials?.refreshToken) {
+          if (
+            hasNotRefreshToken ||
+            isRefreshTokenRequest ||
+            failedRequest.sent
+          ) {
             removeCredentials();
             return Promise.reject(responseError);
           }
 
-          const failedRequest = responseError.config;
+          failedRequest.sent = true;
 
           const newAuthCredentials =
             await authService.authenticateByRefreshToken(
