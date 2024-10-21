@@ -29,12 +29,12 @@ function formatRelative(dateISO: string): string {
 
   const diffInWeeks = Math.floor(diffInDays / 7);
   if (diffInWeeks < 4) {
-    return `${diffInWeeks} w`;
+    return `${diffInWeeks} sem`;
   }
 
   const diffInMonths = Math.floor(diffInDays / 30);
   if (diffInMonths < 12) {
-    return `${diffInMonths} m`;
+    return `${diffInMonths} mes`;
   }
 
   return format(date, 'dd/MM/yyyy');
