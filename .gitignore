@@ -68,3 +68,6 @@ yarn-error.log
 
 # Tests
 coverage/
+
+# lockfiles
+package-lock.json
