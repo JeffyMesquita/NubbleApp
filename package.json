@@ -66,6 +66,14 @@
       "node_modules",
       "./src/test"
     ],
+    "collectCoverage": true,
+    "coverageReporters": [
+      "json",
+      "lcov",
+      "text",
+      "clover",
+      "html"
+    ],
     "collectCoverageFrom": [
       "src/{components,utils}/**/*.{js,jsx,ts,tsx}"
     ],
